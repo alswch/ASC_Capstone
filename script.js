@@ -6,7 +6,10 @@ $(document).ready(function() {
                 {word:"coffee", hint:"Morning booster"},
                 {word:"airplane", hint:"Travel fast"},
                 {word:"laptop", hint:"A carrying device"},
-                {word:"sandwich", hint:"Lunch"} ],
+                {word:"sandwich", hint:"Lunch"},
+                {word:"pencil", hint:"Lunch"},
+                {word:"sunshine", hint:"Lunch"},
+                {word:"monday", hint:"Lunch"} ],
     currentWord: null,
     totalPoints: 0,
 
@@ -18,7 +21,7 @@ $(document).ready(function() {
 
     // ===== ===== ===== WORD BOX DISPLAY ===== ===== =====
     displayLetter: function() {
-      var randomNumber = Math.floor(Math.random()*5);
+      var randomNumber = Math.floor(Math.random()*8);
       var phrase = WoF.wordArray[randomNumber].word;
       this.currentWord = phrase;
       console.log("currentWord", this.currentWord);
@@ -28,7 +31,6 @@ $(document).ready(function() {
         // var letterBox = $("<div/>", {id: 'letter_'+i, class: 'letterBox'});
         // var letter = $("<p/>", {class:'letter'});
         var letterBox = "<div id='letter_" + i + "'class='letterBox'><p id='text_" + i + "'class='letter'>" + nextLetter + "</p></div>"
-        // var hideLetter = "<div class='hideLetter'></div>"
         $('#gameboardContainer').append(letterBox);
         // $('#gameboardContainer').children().last().html(nextLetter);
       };
@@ -41,6 +43,8 @@ $(document).ready(function() {
         self.checkLetter();
       });
     },
+    // ===== ===== ===== CHECKINGTHE GUESSED LETTER ===== ===== =====
+    // ===== ===== If the entered text is correct, display the text on the box and add 100 points
     checkLetter: function() {
       var guessText = $('#guessText').val();
       $('#guessTextDisplay').children().html(guessText);
