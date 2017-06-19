@@ -12,16 +12,20 @@
   height: 100px;
   background-color: blue;
   margin: 10px;
-  text-align: center;
-  color: white;
-  line-height: 100px;
-  font-size: 50px;
 }
 .letter {
+  display: none;
   margin: 0;
   line-height: 100px;
+  text-align: center;
   font-size: 50px;
   color: white;
+}
+.hideLetter {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  margin: 10px;
 }
 #guessTextDisplay{
   width: 200px;

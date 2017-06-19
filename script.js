@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("jQuery ready");
 
-  var WheelofFortune = {
+  var WoF = {
     wordArray: [{word:"water", hint:"Major source of life"},
                 {word:"coffee", hint:"Morning booster"},
                 {word:"airplane", hint:"Travel fast"},
@@ -19,7 +19,7 @@ $(document).ready(function() {
     // ===== ===== ===== WORD BOX DISPLAY ===== ===== =====
     displayLetter: function() {
       var randomNumber = Math.floor(Math.random()*5);
-      var phrase = WheelofFortune.wordArray[randomNumber].word;
+      var phrase = WoF.wordArray[randomNumber].word;
       this.currentWord = phrase;
       console.log("currentWord", this.currentWord);
       for (var i = 0; i < phrase.length; i++) {
@@ -27,9 +27,10 @@ $(document).ready(function() {
         console.log(nextLetter);
         // var letterBox = $("<div/>", {id: 'letter_'+i, class: 'letterBox'});
         // var letter = $("<p/>", {class:'letter'});
-        var letterBox = "<div id='letter_"+i+"'class='letterBox'><p class='letter'>" + nextLetter + "</p></div>"
+        var letterBox = "<div id='letter_" + i + "'class='letterBox'><p id='text_" + i + "'class='letter'>" + nextLetter + "</p></div>"
+        // var hideLetter = "<div class='hideLetter'></div>"
         $('#gameboardContainer').append(letterBox);
-        $('#gameboardContainer').children().last().html(nextLetter);
+        // $('#gameboardContainer').children().last().html(nextLetter);
       };
     },
 
@@ -47,13 +48,22 @@ $(document).ready(function() {
         var nextLetterCheck = this.currentWord[i];
         console.log("nextLetterCheck:", nextLetterCheck);
         if (guessText == nextLetterCheck) {
-          WheelofFortune.totalPoints = WheelofFortune.totalPoints + 100;
-          console.log(WheelofFortune.totalPoints);
+          WoF.totalPoints = WoF.totalPoints + 100;
+          $('#gameboardContainer').find("#text_"+i).css('display', 'block');
+          console.log(WoF.totalPoints);
         }
       }
+      // this.checkLetterIncorrect();
     }
+    // checkLetterIncorrect: function() {
+    //   console.log(Wof.totalPoints);
+    //   // if (Wof.totalPoints == Wof.totalPoints){
+    //   //   console.log("incorrect answer");
+    //   // }
+    //
+    // }
 
   }
-  WheelofFortune.initialize();
+  WoF.initialize();
 
 }); //CLOSES JQUERY
