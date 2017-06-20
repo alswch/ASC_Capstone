@@ -48,26 +48,22 @@ $(document).ready(function() {
     checkLetter: function() {
       var guessText = $('#guessText').val();
       $('#guessTextDisplay').children().html(guessText);
+      var currentPoint = this.totalPoints
+      console.log("currentPoint:", currentPoint);
       for (var i = 0; i < this.currentWord.length; i++) {
         var nextLetterCheck = this.currentWord[i];
-        console.log("nextLetterCheck:", nextLetterCheck);
+        // console.log("nextLetterCheck:", nextLetterCheck);
         if (guessText == nextLetterCheck) {
           WoF.totalPoints = WoF.totalPoints + 100;
-          $('#gameboardContainer').find("#text_"+i).css('display', 'block');
-          console.log(WoF.totalPoints);
+          $('#gameboardContainer').find("#text_" + i).css('display', 'block');
+          // console.log(WoF.totalPoints);
         }
       }
-      // this.checkLetterIncorrect();
+        if (currentPoint == WoF.totalPoints ) {
+          alert("Please try again")
+        }
     }
-    // checkLetterIncorrect: function() {
-    //   console.log(Wof.totalPoints);
-    //   // if (Wof.totalPoints == Wof.totalPoints){
-    //   //   console.log("incorrect answer");
-    //   // }
-    //
-    // }
 
-  }
+  } //CLOSES WoF
   WoF.initialize();
-
 }); //CLOSES JQUERY
