@@ -12,6 +12,7 @@ $(document).ready(function() {
                 {word:"monday", hint:"Lunch"} ],
     currentWord: null,
     totalPoints: 0,
+    guessedLetter: [],
 
     initialize: function() {
       console.log("==initialize==");
@@ -47,7 +48,14 @@ $(document).ready(function() {
     // ===== ===== If the entered text is correct, display the text on the box and add 100 points
     checkLetter: function() {
       var guessText = $('#guessText').val();
-      $('#guessTextDisplay').children().html(guessText);
+      WoF.guessedLetter.push(guessText);
+      var guessedLetterString = "";
+      for (var i = 0; i < WoF.guessedLetter.length; i++) {
+        var x = WoF.guessedLetter[i]
+        guessedLetterString = guessedLetterString + x + "&nbsp" + "&nbsp";
+      }
+      $('#guessTextDisplay').children().html(guessedLetterString);
+
       var currentPoint = this.totalPoints
       console.log("currentPoint:", currentPoint);
       for (var i = 0; i < this.currentWord.length; i++) {
